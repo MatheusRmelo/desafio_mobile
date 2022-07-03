@@ -51,6 +51,7 @@ class _HomeViewState extends State<HomeView> {
             "Bem vindo, ${FirebaseAuth.instance.currentUser!.email!.split("@")[0]}"),
         actions: [
           TextButton(
+              key: const Key("buttonLogout"),
               style: TextButton.styleFrom(primary: Colors.white),
               onPressed: () {
                 FirebaseAuth.instance.signOut().then((value) {

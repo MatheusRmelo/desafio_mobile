@@ -55,6 +55,7 @@ class _RegisterViewState extends State<RegisterView> {
               Text("Crie sua conta", style: theme.textTheme.headline1),
               const SizedBox(height: 24),
               TextFormField(
+                key: const Key("registerEmailField"),
                 style: const TextStyle(fontSize: 18),
                 controller: _emailController,
                 validator: (String? text) {
@@ -71,6 +72,7 @@ class _RegisterViewState extends State<RegisterView> {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                key: const Key("registerPasswordField"),
                 style: const TextStyle(fontSize: 18),
                 obscureText: true,
                 controller: _passwordController,
@@ -94,6 +96,7 @@ class _RegisterViewState extends State<RegisterView> {
                 height: 48,
                 margin: const EdgeInsets.only(top: 24, bottom: 8),
                 child: ElevatedButton(
+                  key: const Key("registerUserButton"),
                   onPressed: _isLoading ? null : _handleClickRegister,
                   child: _isLoading
                       ? Row(
