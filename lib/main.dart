@@ -1,10 +1,11 @@
 import 'package:desafio_mobile/helpers/routes.dart';
-import 'package:desafio_mobile/views/home_page.dart';
+import 'package:desafio_mobile/views/home_view.dart';
 import 'package:desafio_mobile/views/login_view.dart';
 import 'package:desafio_mobile/views/register_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,9 @@ class MyApp extends StatelessWidget {
         colorScheme:
             ThemeData().colorScheme.copyWith(primary: const Color(0xFF2F2F2F)),
       ),
-      initialRoute: Routes.login,
+      initialRoute: FirebaseAuth.instance.currentUser != null
+          ? Routes.home
+          : Routes.login,
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case Routes.login:
@@ -40,7 +43,10 @@ class MyApp extends StatelessWidget {
                 settings: settings, builder: (_) => const RegisterView());
           case Routes.home:
             return MaterialPageRoute(
-                settings: settings, builder: (_) => const HomePage());
+                settings: settings,
+                builder: (_) => FirebaseAuth.instance.currentUser != null
+                    ? const HomeView()
+                    : const LoginView());
         }
         return null;
       },

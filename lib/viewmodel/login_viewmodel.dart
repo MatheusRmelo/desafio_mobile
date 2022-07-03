@@ -1,4 +1,5 @@
 import 'package:desafio_mobile/model/auth_model.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginViewModel {
@@ -9,6 +10,9 @@ class LoginViewModel {
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
           email: email, password: password);
+      await FirebaseAnalytics.instance.logLogin(
+        loginMethod: "emailAndPassword",
+      );
       return AuthModel(
           userCredential: userCredential,
           success: true,
