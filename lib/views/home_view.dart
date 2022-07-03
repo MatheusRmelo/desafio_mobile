@@ -47,7 +47,8 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Bem vindo ${FirebaseAuth.instance.currentUser!.email}"),
+        title: Text(
+            "Bem vindo, ${FirebaseAuth.instance.currentUser!.email!.split("@")[0]}"),
         actions: [
           TextButton(
               style: TextButton.styleFrom(primary: Colors.white),

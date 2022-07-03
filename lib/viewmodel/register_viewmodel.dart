@@ -1,6 +1,8 @@
+import 'package:desafio_mobile/helpers/db.dart';
 import 'package:desafio_mobile/model/auth_model.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 
 class RegisterViewmodel {
   static FirebaseAuth auth = FirebaseAuth.instance;
@@ -10,6 +12,15 @@ class RegisterViewmodel {
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      var database = await DB.connectToDabase();
+      await database.transaction((txn) async {
+        await txn.rawInsert(
+            'INSERT INTO logins(uid, created_at) VALUES(?, ?)', [
+          userCredential.user!.email,
+          DateFormat("yyyy-MM-dd").format(DateTime.now())
+        ]);
+      });
+      database.close();
       await FirebaseAnalytics.instance
           .logSignUp(signUpMethod: "EmailAndPassword");
       return AuthModel(
