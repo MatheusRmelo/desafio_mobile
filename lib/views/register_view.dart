@@ -55,6 +55,7 @@ class _RegisterViewState extends State<RegisterView> {
               Text("Crie sua conta", style: theme.textTheme.headline1),
               const SizedBox(height: 24),
               TextFormField(
+                style: const TextStyle(fontSize: 18),
                 controller: _emailController,
                 validator: (String? text) {
                   if (text == null) {
@@ -70,6 +71,7 @@ class _RegisterViewState extends State<RegisterView> {
               ),
               const SizedBox(height: 16),
               TextFormField(
+                style: const TextStyle(fontSize: 18),
                 obscureText: true,
                 controller: _passwordController,
                 validator: (String? text) {

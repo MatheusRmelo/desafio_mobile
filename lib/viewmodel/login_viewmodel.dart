@@ -10,9 +10,7 @@ class LoginViewModel {
     try {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
           email: email, password: password);
-      await FirebaseAnalytics.instance.logLogin(
-        loginMethod: "emailAndPassword",
-      );
+      await FirebaseAnalytics.instance.logLogin();
       return AuthModel(
           userCredential: userCredential,
           success: true,
