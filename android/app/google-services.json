@@ -29,6 +29,13 @@
             {
               "client_id": "713198259814-4dcqjmmrtt61s45qejag7b2jsb7910kc.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "713198259814-5i1nf8ljec0m0cps03df3nprlc392t85.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.desafioMobile"
+              }
             }
           ]
         }

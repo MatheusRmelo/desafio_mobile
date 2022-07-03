@@ -10,7 +10,8 @@ class RegisterViewmodel {
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      await FirebaseAnalytics.instance.logLogin();
+      await FirebaseAnalytics.instance
+          .logSignUp(signUpMethod: "EmailAndPassword");
       return AuthModel(
           userCredential: userCredential,
           success: true,
