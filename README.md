@@ -1,3 +1,8 @@
+# Instruções para rodar a aplicação
+É necessário apenas fazer um clone do repositório e executar "flutter pub get" e depois "flutter run" e selecionar o dispositivo desejado. Caso queira executar os testes de integração utilize o comando "flutter test integration_test" para rodar todos os testes ou "flutter test integration_test/home_test.dart" para específicos.
+
+Os testes espeficicos podem ser "home_test.dart,login_test.dart,register_test.dart"
+
 # Desafio programação - para vaga desenvolvedor Mobile
 Por favor leiam este documento do começo ao fim, com muita atenção.
 O intuito deste teste é avaliar seus conhecimentos técnicos em desenvolvimento mobile.
